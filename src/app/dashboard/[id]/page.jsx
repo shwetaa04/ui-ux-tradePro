@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import {
   Search,
   Bell,
@@ -225,7 +225,7 @@ const StockChart = ({ stock }) => {
   const [currentValue, setCurrentValue] = useState(425371);
   const [change, setChange] = useState({ value: 0, percentage: 0 });
   const { selectedCurrency } = useCurrency();
-  const [chartLoaded, setChartLoaded] = useState(false);
+  // const [chartLoaded, setChartLoaded] = useState(false);
 
   useEffect(() => {
     // Initialize with some data
@@ -316,9 +316,9 @@ const StockChart = ({ stock }) => {
             <h2 className="text-2xl font-bold text-white">{stock}</h2>
             <CurrencySelector
               selectedCurrency={selectedCurrency}
-              onCurrencyChange={(newCurrency) => {
-                // Implement currency change logic
-              }}
+              // onCurrencyChange={(newCurrency) => {
+              //   // Implement currency change logic
+              // }}
             />
           </div>
           <div className="flex items-center space-x-2">

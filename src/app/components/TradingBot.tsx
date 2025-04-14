@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { Play, Pause, RefreshCw, TrendingUp, TrendingDown, Bot, DollarSign } from 'lucide-react';
+import { Play, Pause, RefreshCw, TrendingUp, TrendingDown, Bot } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyContext';
 
 interface Trade {
@@ -47,8 +47,8 @@ export default function TradingBot() {
   });
 
   const [currentPrice, setCurrentPrice] = useState<number>(INITIAL_PRICE);
-  const [movingAverage, setMovingAverage] = useState<number>(INITIAL_PRICE);
-  const [priceHistory, setPriceHistory] = useState<number[]>([INITIAL_PRICE]);
+  // const [movingAverage, setMovingAverage] = useState<number>(INITIAL_PRICE);
+  // const [priceHistory, setPriceHistory] = useState<number[]>([INITIAL_PRICE]);
 
   // Adjusted Trading Strategy Parameters
   const MA_PERIOD = 3; // Shorter period for more frequent signals
@@ -128,26 +128,26 @@ export default function TradingBot() {
       // Execute immediately when starting
       const newPrice = generateNewPrice();
       setCurrentPrice(newPrice);
-      setPriceHistory(prev => {
-        const newHistory = [...prev, newPrice].slice(-MA_PERIOD);
-        const newMA = calculateMA(newHistory);
-        setMovingAverage(newMA);
-        executeTradingStrategy(newPrice, newMA);
-        return newHistory;
-      });
+      // setPriceHistory(prev => {
+      //   const newHistory = [...prev, newPrice].slice(-MA_PERIOD);
+      //   const newMA = calculateMA(newHistory);
+      //   // setMovingAverage(newMA);
+      //   executeTradingStrategy(newPrice, newMA);
+      //   return newHistory;
+      // });
 
       // Then set up the interval
       intervalId = setInterval(() => {
         const newPrice = generateNewPrice();
         setCurrentPrice(newPrice);
         
-        setPriceHistory(prev => {
-          const newHistory = [...prev, newPrice].slice(-MA_PERIOD);
-          const newMA = calculateMA(newHistory);
-          setMovingAverage(newMA);
-          executeTradingStrategy(newPrice, newMA);
-          return newHistory;
-        });
+        // setPriceHistory(prev => {
+        //   const newHistory = [...prev, newPrice].slice(-MA_PERIOD);
+        //   const newMA = calculateMA(newHistory);
+        //   // setMovingAverage(newMA);
+        //   executeTradingStrategy(newPrice, newMA);
+        //   return newHistory;
+        // });
       }, 500); // Update twice per second for more active trading
     }
 
@@ -164,16 +164,16 @@ export default function TradingBot() {
 
   const resetBot = () => {
     setCurrentPrice(INITIAL_PRICE);
-    setMovingAverage(INITIAL_PRICE);
-    setPriceHistory([INITIAL_PRICE]);
-    setBotState({
-      isActive: false,
-      balance: INITIAL_BALANCE,
-      holdings: 0,
-      trades: [],
-      totalProfits: 0,
-      lastPrice: INITIAL_PRICE,
-    });
+    // setMovingAverage(INITIAL_PRICE);
+    // setPriceHistory([INITIAL_PRICE]);
+    // setBotState({
+    //   isActive: false,
+    //   balance: INITIAL_BALANCE,
+    //   holdings: 0,
+    //   trades: [],
+    //   totalProfits: 0,
+    //   lastPrice: INITIAL_PRICE,
+    // });
   };
 
   return (
