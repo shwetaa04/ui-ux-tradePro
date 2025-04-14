@@ -51,7 +51,7 @@ export default function TradingBot() {
   // const [priceHistory, setPriceHistory] = useState<number[]>([INITIAL_PRICE]);
 
   // Adjusted Trading Strategy Parameters
-  const MA_PERIOD = 3; // Shorter period for more frequent signals
+  // const MA_PERIOD = 3; // Shorter period for more frequent signals
   const BUY_THRESHOLD = 0.005; // 0.5% below moving average
   const SELL_THRESHOLD = 0.005; // 0.5% above moving average
 
